@@ -74,3 +74,12 @@ fifa_tournies_df['duration'] = pd.to_timedelta(
 )
 
 fifa_tournies_df.to_csv('tournies.csv', index=False)
+
+def get_tourney_participants(tournament_id):
+    url = f'{BASE_URL}/v1/tournaments/{tournament_id}/participants.json'
+    response = requests.get(url, params=params, headers=headers)
+
+    data = response.json()
+    participants = [part.get('participant') for part in data]
+
+    return participants
