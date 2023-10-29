@@ -26,6 +26,13 @@ def get_tourney_participants(tournament_id):
     return participants
 
 
+def get_tourney_matches(tournament_id):
+    url = f'{BASE_URL}/v1/tournaments/{tournament_id}/matches.json'
+
+    response = requests.get(url, params=params, headers=headers)
+    data = response.json()
+
+
 params = {
     'api_key': API_KEY,
     'state': 'ended'
@@ -84,4 +91,3 @@ fifa_tournies_df['duration'] = pd.to_timedelta(
 )
 
 fifa_tournies_df.to_csv('tournies.csv', index=False)
-
