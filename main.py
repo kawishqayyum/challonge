@@ -32,6 +32,8 @@ def get_tourney_matches(tournament_id):
     response = requests.get(url, params=params, headers=headers)
     data = response.json()
 
+    return data
+
 
 params = {
     'api_key': API_KEY,
